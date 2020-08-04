@@ -7,7 +7,13 @@ socket.on("message", (message) => {
 document.getElementById("form_message").addEventListener("submit", (e) => {
   e.preventDefault();
   const messageText = e.target.elements.message.value;
-  socket.emit("sendMessage", messageText);
+
+  socket.emit("sendMessage", messageText, (error) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("The message was delivered");
+  });
 });
 
 document.getElementById("send_location").addEventListener("click", () => {
@@ -17,6 +23,9 @@ document.getElementById("send_location").addEventListener("click", () => {
 
   navigator.geolocation.getCurrentPosition((position) => {
     const { latitude, longitude } = position.coords;
-    socket.emit("sendLocation", { latitude, longitude });
+
+    socket.emit("sendLocation", { latitude, longitude }, () => {
+      console.log("Location sent");
+    });
   });
 });
