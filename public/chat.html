@@ -13,7 +13,13 @@
 
         <div class="compose">
           <form id="form_message">
-            <input type="text" placeholder="New message" name="message" />
+            <input
+              type="text"
+              placeholder="New message"
+              name="message"
+              required
+              autocomplete="off"
+            />
             <button>Send</button>
           </form>
           <button id="send_location">Send location</button>
@@ -24,7 +30,7 @@
     <script id="message_template" type="text/html">
       <div class="message">
         <p>
-          <span class="message__name">Something User Name</span>
+          <span class="message__name">{{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
         </p>
         <p>{{message}}</p>
@@ -34,7 +40,7 @@
     <script id="location_template" type="text/html">
       <div>
         <p>
-          <span class="message__name">Something User Name</span>
+          <span class="message__name">{{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
         </p>
         <p><a href={{url}} target="_blank">My current location</a></p>
