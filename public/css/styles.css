@@ -212,7 +212,7 @@ button:disabled {
   }
 
   .chat__sidebar {
-    height: auto;
+    height: 15vh;
     width: auto;
   }
 
